@@ -619,7 +619,7 @@ MonoBehaviour:
   m_TileRenderer: {fileID: 3694161116781995854}
   m_SelectFX: {fileID: 8790972439986889891}
   m_PopupHeight: 0.1
-  m_PopupSpeed: 10
+  m_PopupSpeed: 15
   m_PopupCurve:
     serializedVersion: 2
     m_Curve:
@@ -644,7 +644,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_SpinSpeed: 5
+  m_SpinSpeed: 15
   m_SpinCurve:
     serializedVersion: 2
     m_Curve:
@@ -5523,16 +5523,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6366243708694144771}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 625d2f8851b222e45881d550fd028e63,
-        type: 3}
-      propertyPath: m_Name
-      value: BasicHexTile
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 625d2f8851b222e45881d550fd028e63,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 06d40e4fe0d2f164bad70e95531f53e3, type: 2}
     - target: {fileID: -4216859302048453862, guid: 625d2f8851b222e45881d550fd028e63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5603,6 +5593,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 625d2f8851b222e45881d550fd028e63,
+        type: 3}
+      propertyPath: m_Name
+      value: BasicHexTile
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 625d2f8851b222e45881d550fd028e63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 06d40e4fe0d2f164bad70e95531f53e3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 625d2f8851b222e45881d550fd028e63, type: 3}
 --- !u!1 &3132427238462182290 stripped

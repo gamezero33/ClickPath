@@ -86,7 +86,7 @@ public class HexTileGrid : MonoBehaviour
 		CreateTile( oddq_offset_neighbor( point, 0 ), (byte)( p1 + p2 ), true, false, false );
 
 		p1 = 1; while ( p1 == 1 ) p1 = HexPathTile.PathDirs.Random();
-		CreateTile( oddq_offset_neighbor( point, 3 ), p1, false, false, true );
+		CreateTile( new Vector3Int( 3, 0, 0 ), p1, false, false, true );
 		//for ( int i = 0; i < 6; i++ )
 		//{
 		//	if ( i != 3 )
