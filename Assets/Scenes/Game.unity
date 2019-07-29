@@ -6154,7 +6154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Grid: {fileID: 948178995}
   m_Camera: {fileID: 963194227}
-  m_DeadZone: {x: 0.02, y: 0.02}
+  m_DeadZone: {x: 0.02, y: 0.01}
   m_Coords: {x: 0, y: 0, z: 0}
   m_JumpSpeed: 2
   m_JumpSpeedCurve:

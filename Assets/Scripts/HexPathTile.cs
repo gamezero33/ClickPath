@@ -106,8 +106,7 @@ public class HexPathTile : MonoBehaviour
 	// Private Memnbers
 
 	private bool m_Rotating = false;
-	private float m_TouchTimer = -1;
-
+	
 
 	// Mono Callbacks
 
@@ -118,29 +117,15 @@ public class HexPathTile : MonoBehaviour
 	}
 #endif
 
-	private void OnMouseDown ()
+	private void OnMouseUp ()
 	{
 		if ( !m_Selected ) return;
-		m_TouchTimer = 0;
-	}
-
-	private void Update ()
-	{
-		if ( m_TouchTimer >= 0 && m_TouchTimer < 0.2f )
-		{
-			m_TouchTimer += Time.deltaTime;
-		}
-		else if ( m_TouchTimer > 0.2f && !grid.Player.Swiping )
+		if ( !grid.Player.Swiping && !grid.Player.Moving )
 		{
 			if ( !m_Rotating ) StartCoroutine( Rotate() );
-			m_TouchTimer = -1;
-		}
-		else
-		{
-			m_TouchTimer = -1;
 		}
 	}
-
+	
 
 	// Update Methods
 

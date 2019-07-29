@@ -80,13 +80,14 @@ public class HexTileGrid : MonoBehaviour
 		m_TileCount = 0;
 		Vector3Int point = Vector3Int.zero;
 		CreateTile( point, 1, false, true, false );
+		Player.CurrentCode = 1;
 		byte p1 = 8; while ( p1 == 8 ) p1 = HexPathTile.PathDirs.Random();
 		byte p2 = 8; while ( p2 == 8 || p2 == p1 ) p2 = HexPathTile.PathDirs.Random();
 		//byte p3 = 8; while ( p3 == 8 || p3 == p2 || p3 == p1 ) p3 = HexPathTile.PathDirs.Random();
 		CreateTile( oddq_offset_neighbor( point, 0 ), (byte)( p1 + p2 ), true, false, false );
 
 		p1 = 1; while ( p1 == 1 ) p1 = HexPathTile.PathDirs.Random();
-		CreateTile( new Vector3Int( 3, 0, 0 ), p1, false, false, true );
+		CreateTile( new Vector3Int( 3, 0, 0 ), p1, true, false, true );
 		//for ( int i = 0; i < 6; i++ )
 		//{
 		//	if ( i != 3 )
@@ -159,6 +160,30 @@ public class HexTileGrid : MonoBehaviour
 		tile.Selected = false;
 		tile.Visited = true;
 
+		Player.CurrentCode = tile.PathCode;
+
+		//byte[] bytes = GetBytes( tile.PathCode );
+		//int fd = HexPathTile.PathDirs.ToList().IndexOf( fromDir );
+		//int fail = 0;
+		//for ( int i = 0; i < bytes.Length; i++ )
+		//{
+		//	if ( bytes[i] == fromDir ) continue;
+		//	byte d = HexPathTile.PathDirs[(int)Mathf.Repeat( fd + 3, 6 )];
+		//	byte p1 = d; while ( p1 == d ) p1 = HexPathTile.PathDirs.Random();
+		//	byte p2 = d; while ( p2 == d || p2 == p1 ) p2 = HexPathTile.PathDirs.Random();
+		//	byte p3 = 0;
+		//	if ( Random.Range( 0, 2 ) == 0 )
+		//		p3 = d; while ( p3 == d || p3 == p2 || p3 == p1 ) p3 = HexPathTile.PathDirs.Random();
+		//	HexPathTileBase nbor = CreateTile( oddq_offset_neighbor( coords, HexPathTile.PathDirs.ToList().IndexOf( bytes[i] ) ), (byte)( p1 + p2 + p3 ), true, false, false );
+		//	if ( nbor.Visited && !nbor.PathCode.HasByte( d ) )
+		//	{
+		//		fail++;
+		//		//FailLevel();
+		//	}
+		//}
+		//if ( fail >= bytes.Length ) FailLevel();
+
+
 		int dir = HexPathTile.PathDirs.ToList().IndexOf( (byte)( tile.PathCode - HexPathTile.PathDirs[fromDir] ) );
 		if ( dir >= 0 )
 		{
@@ -171,7 +196,27 @@ public class HexTileGrid : MonoBehaviour
 				FailLevel();
 			}
 		}
+
 	}
+
+
+	private byte[] GetBytes ( byte code )
+	{
+		List<byte> bytes = new List<byte>();
+		while ( code > 0 )
+		{
+			for ( int i = 0; i < HexPathTile.PathDirs.Length; i++ )
+			{
+				if ( code.HasByte( HexPathTile.PathDirs[i] ) )
+				{
+					bytes.Add( HexPathTile.PathDirs[i] );
+					code -= HexPathTile.PathDirs[i];
+				}
+			}
+		}
+		return bytes.ToArray();
+	}
+
 
 	private void CompleteLevel ()
 	{

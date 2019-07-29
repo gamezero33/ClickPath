@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject m_EmoteObject;
 	[SerializeField] private float m_SwipeThreshold = 0.1f;
 
+	public byte CurrentCode;
+
 	private Vector3 m_SwipeStart = Vector3.zero;
 	private bool m_Moving = false;
+	public bool Moving { get { return m_Moving; } }
 
 	private bool m_Active = true;
 	private bool m_SwipeStarted = false;
@@ -55,24 +58,28 @@ public class PlayerController : MonoBehaviour
 			int swipeDir = 0;
 			if ( m_SwipeStart.y < pos.y - m_DeadZone.y )
 			{
-				swipeDir = 1;
-				if ( m_SwipeStart.x < pos.x - m_DeadZone.x )
+				if ( CurrentCode.HasByte( HexPathTile.PathDirs[0] ) )
+					swipeDir = 1;
+
+				if ( CurrentCode.HasByte( HexPathTile.PathDirs[1] ) && m_SwipeStart.x < pos.x - m_DeadZone.x )
 				{
 					swipeDir = 2;
 				}
-				else if ( pos.x + m_DeadZone.x < m_SwipeStart.x )
+				else if ( CurrentCode.HasByte( HexPathTile.PathDirs[5] ) && pos.x + m_DeadZone.x < m_SwipeStart.x )
 				{
 					swipeDir = 6;
 				}
 			}
 			else if ( pos.y + m_DeadZone.y < m_SwipeStart.y )
 			{
-				swipeDir = 4;
-				if ( m_SwipeStart.x < pos.x - m_DeadZone.x )
+				if ( CurrentCode.HasByte( HexPathTile.PathDirs[3] ) )
+					swipeDir = 4;
+
+				if ( CurrentCode.HasByte( HexPathTile.PathDirs[2] ) && m_SwipeStart.x < pos.x - m_DeadZone.x )
 				{
 					swipeDir = 3;
 				}
-				else if ( pos.x + m_DeadZone.x < m_SwipeStart.x )
+				else if ( CurrentCode.HasByte( HexPathTile.PathDirs[4] ) && pos.x + m_DeadZone.x < m_SwipeStart.x )
 				{
 					swipeDir = 5;
 				}

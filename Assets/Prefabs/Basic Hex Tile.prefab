@@ -619,7 +619,7 @@ MonoBehaviour:
   m_TileRenderer: {fileID: 3694161116781995854}
   m_SelectFX: {fileID: 8790972439986889891}
   m_PopupHeight: 0.1
-  m_PopupSpeed: 15
+  m_PopupSpeed: 20
   m_PopupCurve:
     serializedVersion: 2
     m_Curve:
@@ -644,7 +644,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_SpinSpeed: 15
+  m_SpinSpeed: 20
   m_SpinCurve:
     serializedVersion: 2
     m_Curve:
